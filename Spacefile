@@ -1,0 +1,33 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: chatgpt-web
+    src: ./
+    engine: nodejs16
+    primary: true
+    commands:
+      - npm install pnpm -g
+      - ~/nvm/current/bin/pnpm install
+      - ~/nvm/current/bin/pnpm run build
+    serve: dist
+
+  # - name: api
+  #   src: ./service
+  #   engine: nodejs16
+  #   path: api
+  #   commands:
+  #     - npm install pnpm -g
+  #     - ~/nvm/current/bin/pnpm install
+  #     - ~/nvm/current/bin/pnpm run build
+  #     - cp ./package.json ./build
+  #     - cp ./pnpm-lock.yaml ./build
+  #     - cd build/
+  #     - ~/nvm/current/bin/pnpm install --production
+  #   include:
+  #     - build
+  #   run: "node build/index.js"
+  #   presets:
+  #     env:
+  #       - name: OPENAI_API_KEY
+  #         description: openai api key
+  #         default: ""
